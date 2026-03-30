@@ -1,0 +1,19 @@
+name: mini-stock-pipline
+
+services:
+  postgres:
+    image: postgres:15
+    ports:
+      - "5433:5432"
+    volumes: 
+      - ./data:/var/lib/postgresql/data
+    env_file:
+      - .env.db-root-creds
+    networks:
+      - my-network
+
+volumes:
+  data:
+networks:
+  my-network:
+    driver: bridge
